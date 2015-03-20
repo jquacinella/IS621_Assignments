@@ -11,6 +11,6 @@ output: html_document
 
 The rules I came up with give about a 68% accuracy. This has an upper limit since some of the rows in the training data are explicitly contradictory, so some miscategorization must happen. I use the same code to write the predictions for the private data set, which is saved to *jury.private.predictions.csv*.
 
-**Part 5:** The code for creating a decision tree from **C50** and **rpart** are at the end of *Assignment4.R*. The model from rpart is plotted to show a visual representation of the tree that was found, which is saved to *tree.png*, and shown here:
+**Part 5:** The code for creating a decision tree from **C50** and **rpart** are at the end of *Assignment4.R*.  The C50 model gets a 74% accuracy on the jury public data, while the rpart one only gets 66.37% accuracy. The model from rpart is plotted to show a visual representation of the tree that was found, which is saved to *tree.png*, and shown here:
 
 ![Tree from RPart](tree.png)
