@@ -101,7 +101,7 @@ majority.vote <- function(clash.set) {
 
 # Load jury data
 setwd("~/Documents/Masters/IS621//Assignment4");
-jury.training <- read.csv("jury-training-data(1).csv");
+jury.training <- read.csv("jury-training-data.csv");
 jury.training <- na.omit(jury.training);
 
 max.gain(jury.training, "tendency")  # outputs gender
@@ -292,7 +292,7 @@ juryPredict <- function (defendent) {
 
 
 # Read in private juror data
-jury.public <- read.csv("jury-learning-data-public(1).csv");
+jury.public <- read.csv("jury-learning-data-public.csv");
 jury.public <- na.omit(jury.public);
 
 # Using the above function, figure out how many we correctly predict
@@ -308,7 +308,7 @@ print(paste("On public data set, we get an accuracy of ", 100 * sum(jury.public.
 
 
 # Private juror data
-jury.private <- read.csv("jury-learning-data-private(1).csv");
+jury.private <- read.csv("jury-learning-data-private.csv");
 jury.private <- na.omit(jury.private);
 
 # Using the above function, predict on the private data set
@@ -319,7 +319,7 @@ for(i in 1:nrow(jury.private)) {
 
 # Save predictions
 jury.private <- cbind(jury.private, predictions=unlist(jury.private.predictions))
-write.csv(file="jury,private.predicitons.csv", x=jury.private)
+write.csv(file="jury.private.predicitons.csv", x=jury.private)
 
 
 
