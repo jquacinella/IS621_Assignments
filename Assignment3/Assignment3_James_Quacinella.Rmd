@@ -1,0 +1,68 @@
+---
+title: "Assignment3_James_Quacinella"
+author: "James Quacinella"
+date: "March 8, 2015"
+output: html_document
+---
+
+  - Implement a Naïve Bayes algorithm:
+    * Your R code that implements the Naïve Bayes algorithm
+        * This can be found in **naiveBayes.R**
+    * Your comments on how well the code performs on the sample data set provided
+        * The accuracy, as defined as correct predictions on the test set, is 65%. The confusion matrix shows 26 correctly identified, with 14 mis-classified inputs. The implementation doesn't seem slow as compared to e1071 (see later).
+
+  - Implement a nearest-neighbor algorithm
+    * Your R code that implements the Naïve Bayes algorithm
+        * This can be found in **nearestNeighbor.R**
+    * Your comments on how well the code performs on the sample data set provided
+        * The accuracy from this custom implementation is 77.5%, which is better than the NB approach, when k = 3. Using odd numbers for k from 3 to 13, 13 gives the best accuracy at 87.5%. This was tested using the class module below, since the custom implementation is not very performant.
+  
+  - Azure Machine Learning
+    * Uploaded and shared my workspace which is named jamesquacinella-IS621-Assignment3. Both experiments save their output to CSV, which have both been saved to datasets.
+  
+  - Using e1071 and class modules 
+    * Your R code implementing the Naïve Bayes algorithm in e1071
+        * This is implemented in **e1071.R**
+    * Your comments on the effectiveness of the e1071 approach and whether the results are
+identical to your own hand implementation results in problem 1
+        * The code is much simple to write but speed wise, seems to be the same as my custom implementation. Also, the results are identical to the custom code.
+    * Your R code implementing the Nearest Neighbor algorithm in class
+        * This is implemented in **class.R**
+    * Your comments on the effectiveness of the class approach and whether the results are
+identical to your own hand implementation results in problem 2
+        * The code is much simple to write but speed wise, unlike above, seems to perform better than my custom implementation. This is because I am taking the naive approach in calculating all distances to all points in the training set, while this module uses some tricks to prune the search. However, the results are identical to the custom code (NOTE: the confusion matrix from the module versus my code seems to be a transpose for some reason, but otherwise the accuracy is the same). This code also loops through values of k, finding that k = 3 is optimal in maximizing accuracy.
+
+  - Apply the Naïve Bayes approach to classify the observations in the data set on potential jurors. Try both your own implementation of Naïve Bayes and the package implementation examined in problem 4. Comment on how well your analysis works by examining the confusion matrix.
+    * Your scored private dataset
+        * The custom implementation code is in **NaiveBayesJurors.R** (really should have refactored my code). The output is stored in **jurors.private.predictions.csv**.
+    * Your analysis of your results
+        * The accuracy, when trained on the training data, and evaluated against the public data set is 63.025%. The confusion matrix is as follows:
+```
+             Guilty Not Guilty
+  Guilty         37         27
+  Not Guilty     17         38
+```
+We have quite a few miscategorizations. This may be due to the fact that some of these variables may not be independent, which is an assumption of NB.
+
+  - Apply the Nearest Neighbor approach to classify the observations in the data set on diabetes in Pima Indians. Try both your own implementation of Nearest Neighbor and the package implementation examined in problem 4. Comment on how well your analysis works by examining the confusion matrix. Be sure to try several values of k.
+    * Your scored private dataset
+        * The code is in **kNNPima.R** and **classPima.R** (for the class module solution) (really should have refactored my code). The output is stored in **pima.private.predictions.csv**.
+    * Your analysis of your results
+        * The accuracy gained by training on the training data and evaluating against the public data set gave a 77.16% when k = 7. This gave rise to the following confusion matrix:
+```
+predictions  0  1
+          0 98 26
+          1 11 27
+```
+The code is very slow, even on this small data set, when using my custom implementation. Using the class module, I get this:
+
+```
+[1] "For k = 3, we get an accuracy of: 69.7530864197531%"
+[1] "For k = 5, we get an accuracy of: 72.8395061728395%"
+[1] "For k = 7, we get an accuracy of: 77.1604938271605%"
+[1] "For k = 9, we get an accuracy of: 75.3086419753086%"
+[1] "For k = 11, we get an accuracy of: 74.0740740740741%"
+[1] "For k = 13, we get an accuracy of: 74.6913580246914%"
+```
+
+Using k = 7, I then create the predictions for the private data set, which is in **pima.private.predictions.csv**.
