@@ -1,0 +1,4 @@
+Age:	median age of persons living in the state
+Income:	per capita personal income for the state
+Price:	weighted average price (in cents) of a pack of cigarettes in the state
+Sales:	per capita sales of cigarettes (measured in packs) in the state
