@@ -39,12 +39,12 @@ The final predicitons for the evaluation data are stored in **cigarette-evaluati
 
 ## Question 2 - Clustering
 
-In this part, we use the countries data and group the data using both kmeans and heirarchical clustering. With kmeans clustering, we need to tell it ahead of time how many clusters we expect. For this, various kmeans models were developed for k = 1 to 10 clusters, using the tot.withinss model attribute to determine which k value is best. The tot.withinss model attribute is the sum of of the within-cluster square distances, and we use this as a metric as we want the distances within clusters to generally be smaller. Using this, we produce the elbow graph below:
+In this part, we use the countries data and group the data using both kmeans and heirarchical clustering. With kmeans clustering, we need to tell it ahead of time how many clusters we expect. For this, various kmeans models were developed for k = 1 to 10 clusters, using the tot.withinss model attribute to determine which k value is best. The tot.withinss model attribute is the sum of of the within-cluster square distances, and we use this as a metric as we want the distances within clusters to generally be smaller. Using this, here is the elbow graph below:
 
 ![K Means Elbow Graph](KMeansElbow.png)
 
 Given this and the instructions, I choose k = 6 as optimal. Using this model, I exported the cluster assignments to **countries-mapping.csv**.
 
-I also produced a dendrogram via heirarchiical clustering, but the output below is hard to read:
+I also produced a dendrogram via heirarchical clustering, but the output below is hard to read. I highlighted 6 groups on the dendrogram, but seeing as it is hard to read, the final model chosen is the k-means cluster with k=6.
 
 ![Heirarchical Dendrogram](Dendrogram.png)
