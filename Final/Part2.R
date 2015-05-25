@@ -1,7 +1,8 @@
 setwd("Code/Masters/IS621/Final/")
 
-### Part 3
+### Part 3 - Lab
 
+# Load data and scale it appropriately
 protein <- read.table("country-protein.txt", header=TRUE)
 proteinmatrix <- scale(protein[,2:10])
 attr(proteinmatrix,"scaled:center")
@@ -42,12 +43,14 @@ title("Elbow Diagram")
 # Assign Clusers to data
 #countries$cluster3 <- countries.kmeans3$cluster
 #countries$cluster4 <- countries.kmeans4$cluster
-countries$cluster5 <- countries.kmeans[[5]]$cluster
+#countries$cluster5 <- countries.kmeans[[5]]$cluster
 countries$cluster6 <- countries.kmeans[[6]]$cluster
-countriessorted5 <- countries[order(countries$cluster5),]
-View(countriessorted5)
+#countriessorted5 <- countries[order(countries$cluster5),]
+#View(countriessorted5)
 countriessorted6 <- countries[order(countries$cluster6),]
 View(countriessorted6)
+write.csv(countriessorted6, "countries-mapping.csv")
+
 
 
 

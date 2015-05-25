@@ -1,4 +1,4 @@
-setwd("Code/Masters/IS621/Final/")
+setwd("~/Code/Masters/IS621/Final/")
 
 ### Part 1 - Regression
 
@@ -23,3 +23,25 @@ models[[7]] <- lm(Sales ~ Age + Price, data=cigarette.training)
 for (i in 1:7) {
   print(paste(summary(models[[i]])$r.squared, mean(models[[i]]$residuals^2)))
 }
+
+# Residual plots for models based on single predictor
+residuals.income = resid(models[[2]])
+residuals.age = resid(models[[3]])
+residuals.price = resid(models[[4]])
+
+# Income residuals
+plot(cigarette.training$Income, residuals.income, ylab="Residuals", xlab="Income", main="Residuals for Income") 
+abline(0, 0)
+
+# Age Residuals
+plot(cigarette.training$Age, residuals.age, ylab="Residuals", xlab="Age", main="Residuals for Age") 
+abline(0, 0)
+
+# Price Residuals
+plot(cigarette.training$Price, residuals.price, ylab="Residuals", xlab="Price", main="Residuals for Price") 
+abline(0, 0)
+
+
+### Final evaluation
+cigarette.evaluation$prediction <- predict(models[[1]], cigarette.evaluation)
+write.csv(cigarette.evaluation, "cigarette-evaluation-data-with-prediction.csv")
