@@ -17,11 +17,12 @@ For all questions, please refer to [my github repo](https://github.com/jquacinel
 
 To classify the data into two groups (whether or not the row rperesents a neighborhood that is expected to have a high risk for criminal activity), two tree models were trained using different R implementations, rpart and C50. After training a model using all the columns of the training data, with an 80 - 20 split between trainging and test daya, both models had >95% accuracy on the training data. The confusion matrix for the C50 model, which is the model I'm choosing due to its slightly higher accuracy on the training data, has the following confusion matrix:
 
-
+```
           Reference
 Prediction  0  1
          0 43  1
          1  2 47
+```
 
 Only 3 test cases were misclassified from the test data set. The most important columns in predicting the data according to this model are nox, rad and ptratio. See below for the final output of the C50 model:
 
